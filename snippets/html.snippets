@@ -110,9 +110,7 @@ snippet body
 snippet head
 	<head>
 		<meta http-equiv="content-type" content="text/html; charset=utf-8"`Close()`>
-
 		<title>${1:`substitute(Filename('', 'Page Title'), '^.', '\u&', '')`}</title>
-		${2}
 	</head>
 snippet title
 	<title>${1:`substitute(Filename('', 'Page Title'), '^.', '\u&', '')`}</title>${2}
@@ -131,7 +129,7 @@ snippet base
 snippet r
 	<br`Close()[1:]`>
 snippet div
-	<div id="${1:name}">
+	<div class="${1:name}">
 		${2}
 	</div>
 # Embed QT Movie
@@ -151,15 +149,12 @@ snippet movie
 snippet fieldset
 	<fieldset id="$1">
 		<legend>${1:name}</legend>
-
 		${3}
 	</fieldset>
 snippet form
 	<form action="${1:`Filename('$1_submit')`}" method="${2:get}" accept-charset="utf-8">
 		${3}
-
-
-	<p><input type="submit" value="Continue &rarr;"`Close()`></p>
+		<p><input type="submit" value="Continue &rarr;"`Close()`></p>
 	</form>
 snippet h1
 	<h1 id="${1:heading}">${2:$1}</h1>
@@ -182,9 +177,17 @@ snippet select
 		<option value="${3:option}">${4:$3}</option>
 	</select>${5}
 snippet table
-	<table border="${1:0}">
-		<tr><th>${2:Header}</th></tr>
-		<tr><th>${3:Data}</th></tr>
-	</table>${4}
+	<table class="table table-bordered table-striped">
+		<thead>
+			<tr>
+				<th>${1:head}</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>${2:data}</td>
+			</tr>
+		</tbody>
+	</table>${3}
 snippet textarea
 	<textarea name="${1:Name}" rows="${2:8}" cols="${3:40}">${4}</textarea>${5}
